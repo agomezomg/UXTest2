@@ -1,0 +1,226 @@
+[debug] [2018-09-23T05:25:01.337Z] ----------------------------------------------------------------------
+[debug] [2018-09-23T05:25:01.339Z] Command:       /usr/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-09-23T05:25:01.339Z] CLI Version:   4.2.1
+[debug] [2018-09-23T05:25:01.339Z] Platform:      linux
+[debug] [2018-09-23T05:25:01.339Z] Node Version:  v8.10.0
+[debug] [2018-09-23T05:25:01.339Z] Time:          Sat Sep 22 2018 23:25:01 GMT-0600 (CST)
+[debug] [2018-09-23T05:25:01.339Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-23T05:25:01.345Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-23T05:25:01.346Z] > authorizing via signed-in user
+[debug] [2018-09-23T05:25:01.347Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/examen1-ux  
+ 
+[debug] [2018-09-23T05:25:01.876Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'examen1-ux'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-09-23T05:25:03.429Z] >>> HTTP REQUEST PUT https://examen1-ux.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    "messages": {
+      ".read": true,
+      "$message": {
+        // Users can only add new messages to the review queue.
+        ".write": "!data.exists()",
+        // Users can't set the sanitized boolean themselves.
+        ".validate": "!newData.hasChildren(['sanitized'])"
+      }
+    }
+  }
+}
+
+[debug] [2018-09-23T05:25:04.052Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database examen1-ux is valid
+[debug] [2018-09-23T05:25:04.055Z] > [functions] package.json contents: {
+  "name": "text-moderation-functions",
+  "description": "Moderate text using Firebase Functions",
+  "dependencies": {
+    "bad-words": "^1.3.1",
+    "capitalize-sentence": "^0.1.2",
+    "firebase-admin": "~6.0.0",
+    "firebase-functions": "^2.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-plugin-promise": "^3.6.0"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint --max-warnings=0 .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-09-23T05:25:04.055Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/examen1-ux?view=CONSUMER_VIEW  
+ 
+[debug] [2018-09-23T05:25:04.056Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/examen1-ux?view=CONSUMER_VIEW  
+ 
+[debug] [2018-09-23T05:25:04.869Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:04.958Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2018-09-23T05:25:04.961Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/examen1-ux  
+ 
+[debug] [2018-09-23T05:25:05.287Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:05.288Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/954549860096:getServerAppConfig  
+ 
+[debug] [2018-09-23T05:25:05.788Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:05.792Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/examen1-ux/versions  
+
+[debug] [2018-09-23T05:25:06.915Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-09-23T05:25:06.922Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/examen1-ux/configs  
+ 
+[debug] [2018-09-23T05:25:07.291Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:07.295Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/examen1-ux/configs/gmail/variables  
+ 
+[debug] [2018-09-23T05:25:07.296Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/examen1-ux/configs/bitly/variables  
+ 
+[debug] [2018-09-23T05:25:07.633Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:07.636Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/examen1-ux/configs/gmail/variables/password  
+ 
+[debug] [2018-09-23T05:25:07.637Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/examen1-ux/configs/gmail/variables/email  
+ 
+[debug] [2018-09-23T05:25:07.671Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:07.672Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/examen1-ux/configs/bitly/variables/access_token  
+ 
+[debug] [2018-09-23T05:25:07.886Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:07.891Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:07.956Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (3.54 KB) for uploading
+[debug] [2018-09-23T05:25:08.419Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/examen1-ux/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-09-23T05:25:09.168Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:09.170Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-356765cc-6632-445d-9665-b71351d413f3/d141378c-113f-420c-afda-4345ef25891b.zip?GoogleAccessId=service-954549860096@gcf-admin-robot.iam.gserviceaccount.com&Expires=1537682108&Signature=mGxN2r9x2HC6dOnRVxChxkCZ7Da6VOzIQa6StPo1gHx%2BkobSzjX0T7c6Qzummdcs4FY95iAczHL7E9ovNsSnOotf%2FsOEO6RZsukd%2B10W6IvR0MzAR8JIbId6e7kUcPsmsSn9%2BNeisQGP2jw6jsn%2BWYc9eUr%2Fo3EMt3rxFZQ486dr%2BuRrvZg6yijKd%2BDyh6R1H7hUIY2Bv040WfwLjIUeWUdHoNhsFWwKbTqrwMjMU230eN8TcgOzuVg1BihBL38TAUnL3mfePjt2SFIS90e%2ByrkT0bcdXAX8EdkyeFtEgxO%2FFmbqBRCnWbx4jrEWWc%2BbxrTIViyRhfyUNqzuXqI1Gg%3D%3D  
+
+[debug] [2018-09-23T05:25:09.681Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: functions folder uploaded successfully
+[info] i  hosting[examen1-ux]: beginning deploy...
+[info] i  hosting[examen1-ux]: found 3 files in public
+[debug] [2018-09-23T05:25:09.701Z] [hosting] hash cache [cHVibGlj] not populated
+[debug] [2018-09-23T05:25:09.706Z] [hosting] hash cache [cHVibGlj] stored for 3 files
+[debug] [2018-09-23T05:25:09.706Z] [hosting][hash queue][FINAL]
+[debug] [2018-09-23T05:25:09.706Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/examen1-ux/versions/baedcec8d7dcacdb:populateFiles  
+ <request body omitted>
+[debug] [2018-09-23T05:25:10.397Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:10.401Z] [hosting][populate queue][FINAL]
+[debug] [2018-09-23T05:25:10.401Z] [hosting] uploads queued: 3
+[debug] [2018-09-23T05:25:12.532Z] [hosting][upload queue][FINAL]
+[info] ✔  hosting[examen1-ux]: file upload complete
+[debug] [2018-09-23T05:25:12.536Z] [hosting] deploy completed after 2851ms
+[info] i  database: releasing rules...
+[debug] [2018-09-23T05:25:12.788Z] >>> HTTP REQUEST PUT https://examen1-ux.firebaseio.com/.settings/rules.json  
+ {
+  "rules": {
+    "messages": {
+      ".read": true,
+      "$message": {
+        // Users can only add new messages to the review queue.
+        ".write": "!data.exists()",
+        // Users can't set the sanitized boolean themselves.
+        ".validate": "!newData.hasChildren(['sanitized'])"
+      }
+    }
+  }
+}
+
+[debug] [2018-09-23T05:25:13.366Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules for database examen1-ux released successfully
+[debug] [2018-09-23T05:25:13.373Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/examen1-ux/locations/-/functions  
+ 
+[debug] [2018-09-23T05:25:14.188Z] <<< HTTP RESPONSE 200
+[info] i  functions: creating Node.js 8 function moderator(us-central1)...
+[debug] [2018-09-23T05:25:14.197Z] Trigger is:  {"eventTrigger":{"resource":"projects/_/instances/examen1-ux/refs/posts/{postId}","eventType":"providers/google.firebase.database/eventTypes/ref.write","service":"firebaseio.com"}}
+[info] 
+The following functions are found in your project but do not exist in your local source code:
+	countlikechange(us-central1)
+	recountposts(us-central1)
+	sendEmailConfirmation(us-central1)
+	shortenUrl(us-central1)
+	truncate(us-central1)
+
+If you are renaming a function or changing its region, it is recommended that you create the new function first before deleting the old one to prevent event loss. For more info, visit https://firebase.google.com/docs/functions/manage-functions#modify
+
+[info] i  functions: continuing with other deployments.
+[debug] [2018-09-23T05:25:23.117Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/examen1-ux/locations/us-central1/functions  
+
+[debug] [2018-09-23T05:25:23.710Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:23.718Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:24.323Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:26.329Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:26.883Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:28.887Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:29.359Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:31.362Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:31.902Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:33.904Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:34.461Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:36.464Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:36.709Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:38.712Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:39.272Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:41.273Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:41.832Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:43.835Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:44.395Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:46.396Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:46.953Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:48.956Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:49.514Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:51.518Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:52.074Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:54.077Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:54.637Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:56.640Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:57.197Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:25:59.201Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:25:59.753Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:01.757Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:26:02.314Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:04.318Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:26:04.873Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:06.877Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:26:07.441Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:09.445Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:26:09.994Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:11.998Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:26:12.479Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:14.482Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:26:15.114Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:17.118Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:26:17.477Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:19.479Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
+[debug] [2018-09-23T05:26:20.029Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-23T05:26:22.032Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZXhhbWVuMS11eC91cy1jZW50cmFsMS9tb2RlcmF0b3IvbXdmOHd4SEgzUzQ  
+ 
