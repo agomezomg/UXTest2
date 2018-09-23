@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
-import firebase from 'Firebase';
+import { Provider } from 'react-redux';
+import { Font, AppLoading } from 'expo';
+
+import Router from './app/config/routes'
+import store from './app/modules/redux/store';
+
+function cacheFonts(fonts) {
+    return fonts.map(font => Font.loadAsync(font));
+}
 
 export default class App extends Component {
-  render() {
-    return (
-      <Container>
-        <Header />
-        <Content>
-          <Card>
-            <CardItem header>
-              <Text>NativeBase</Text>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>
-                  //Your text here
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem footer>
-              <Text>GeekyAnts</Text>
-            </CardItem>
-         </Card>
-        </Content>
-      </Container>
-    );
-  }
+    constructor() {
+        super();
+        this.state = {
+            isReady: false,
+        }
+    }
+
+    render() {
+        if (!this.state.isReady) {
+            return (
+                <AppLoading
+                    startAsync={this._loadAssetsAsync}
+                    onFinish={() => this.setState({isReady: true})}
+                    onError={console.warn}
+                />
+            );
+        }
+        
+        return (
+            <Provider store={store}>
+                    <Router/>
+            </Provider>
+        );
+    }
 }
